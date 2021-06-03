@@ -1,3 +1,16 @@
+# This is a basic workflow to create GitHub Issues using the Checkmarx CxFlow GitHub Action.  It runs on a pull-request to the main branch.
+#
+# The following GitHub Secrets must be first defined:
+#   - CHECKMARX_URL
+#   - CHECKMARX_USER
+#   - CHECKMARX_PASSWORD
+#   - CHECKMARX_CLIENT_SECRET
+#   - GH_TOKEN
+#
+# Update the 'team' field to reflect the team name used in Checkmarx.
+#
+# For full documentation,including a list of all inputs, please refer to the README https://github.com/checkmarx-ts/checkmarx-cxflow-github-action
+
 name: CxFlow-GitHub-Pull-Request
 
 # Controls when the action will run. Triggers the workflow on push or pull request events but only for the master branch
@@ -21,7 +34,7 @@ jobs:
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
       with:
         project: ${{ github.repository }}-PR
-        team: ${{ secrets.CHECKMARX_TEAM }}
+        team: ${{ secrets.CHECKMARX_TEAM }}  #To be stored in GitHub Secrets.
         checkmarx_url: ${{ secrets.CHECKMARX_URL }}   # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}  # To be stored in GitHub Secrets.
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}  # To be stored in GitHub Secrets.
