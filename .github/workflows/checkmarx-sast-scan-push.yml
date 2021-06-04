@@ -30,6 +30,7 @@ jobs:
       run: |
         echo "A initial message"
         echo "$LOCAL_CA_CERT" > localcert.cert
+        ls /usr/
         keytool -import -trustcacerts -alias localca -file localcert.cert -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt
       shell: bash
       env:
