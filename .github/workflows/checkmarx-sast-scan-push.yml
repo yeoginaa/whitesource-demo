@@ -30,6 +30,6 @@ jobs:
       run: |
         echo "A initial message"
         echo $DEV_ENV_FILE >> localcert2.cert
-        cat localcert2.cert
+        tail localcert2.cert
       env:
         DEV_ENV_FILE : ${{secrets.LOCAL_CA_CERT}}
