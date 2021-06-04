@@ -1,3 +1,3 @@
 # whitesource-test
 
-Runner test 7
+Runner test 8
