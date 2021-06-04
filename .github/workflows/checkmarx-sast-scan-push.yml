@@ -32,6 +32,8 @@ jobs:
         echo "$LOCAL_CA_CERT" > localcert.cert
         ls /usr/
         keytool -import -trustcacerts -alias localca -file localcert.cert -keystore "$JAVA_HOME"\lib\security\cacerts -storepass changeit -noprompt
+        telnet github.com 443
+        telnet alawpcxmgr201.risk.regn.net 443
       shell: bash
       env:
         LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
