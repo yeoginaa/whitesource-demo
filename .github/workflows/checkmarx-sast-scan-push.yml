@@ -29,7 +29,8 @@ jobs:
     - name: Trust CX Cert
       run: |
         echo "A initial message"
-        printf "$DEV_ENV_FILE" >> localcert.cert
+        'echo "$LOCAL_CA_CERT" >> localcert.cert'
         keytool -import -trustcacerts -alias localca -file localcert.cert -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt
+      shell: bash
       env:
-        DEV_ENV_FILE : ${{secrets.LOCAL_CA_CERT}}
+        LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
