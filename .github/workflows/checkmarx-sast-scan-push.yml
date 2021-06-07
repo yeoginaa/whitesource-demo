@@ -30,10 +30,10 @@ jobs:
       run: |
         echo "A initial message"
         echo "$LOCAL_CA_CERT" > localcert.cert
-        keytool -import -trustcacerts -alias localca3 -file localcert.cert -keystore "$JAVA_HOME"\lib\security\cacerts -storepass changeit -noprompt
+        keytool -import -trustcacerts -alias localca -file localcert.cert -keystore /usr/lib/jvm/jre/lib/security/cacerts -storepass changeit -noprompt
         nc -zv github.com 443
         nc -zv alawpcxmgr201.risk.regn.net 443
-        curl https://alawpcxmgr201.risk.regn.net/CxRestAPI/auth
+        curl https://alawpcxmgr201.risk.regn.net/CxRestAPI/
       shell: bash
       env:
         LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
