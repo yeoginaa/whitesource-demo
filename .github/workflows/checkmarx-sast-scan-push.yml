@@ -28,7 +28,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Trust CX Cert
       run: |
-        USER root
+        whoami
         echo "A initial message"
         echo "$LOCAL_CA_CERT" > localcert.cert
         keytool -import -trustcacerts -alias localca -file localcert.cert -keystore /usr/local/share/ca-certificates/ -storepass ch4nge1t.A -noprompt
