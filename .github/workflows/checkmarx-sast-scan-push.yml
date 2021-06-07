@@ -29,7 +29,7 @@ jobs:
         echo "A initial message"
         echo "$LOCAL_CA_CERT" > localcert.cert
         ls /usr/
-        keytool -import -trustcacerts -alias localca2 -file localcert.cert -keystore "$JAVA_HOME"\lib\security\cacerts -storepass changeit -noprompt
+        keytool -import -trustcacerts -alias localca3 -file localcert.cert -keystore "$JAVA_HOME"\lib\security\cacerts -storepass changeit -noprompt
         nc -zv github.com 443
         nc -zv alawpcxmgr201.risk.regn.net 443
       shell: bash
@@ -38,5 +38,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
-      run: |
-        echo "Hello"
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      with:
+        project: Project-GITHUB-sample # <-- Insert Checkmarx SAST Project Name
+        team: ${{ secrets.CHECKMARX_TEAM }}  #To be stored in GitHub Secrets.
+        checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
+        checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }} # To be stored in GitHub Secrets.
+        checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
+        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+        break_build: false
+        scanners: sast
+        bug_tracker: Sarif
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
