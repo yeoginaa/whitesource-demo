@@ -35,9 +35,9 @@ jobs:
       env:
         LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
     - name: Checkout
-      uses: |
-        actions/checkout@v2
-        checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
+      uses: actions/checkout@v2
+    - name: Gitaction
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
       with:
         project: Project-GITHUB-sample # <-- Insert Checkmarx SAST Project Name
         team: ${{ secrets.CHECKMARX_TEAM }}  #To be stored in GitHub Secrets.
