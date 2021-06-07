@@ -24,8 +24,6 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
     - name: Trust CX Cert
       run: |
         echo "A initial message"
@@ -37,6 +35,8 @@ jobs:
       shell: bash
       env:
         LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
       run: |
         echo "Hello"
