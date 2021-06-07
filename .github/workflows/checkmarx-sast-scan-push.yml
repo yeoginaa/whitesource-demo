@@ -30,6 +30,7 @@ jobs:
       run: |
         uname -a
         echo "A initial message"
+        cat /etc/os-release
         echo "$LOCAL_CA_CERT" > localcert.cert
         keytool -import -trustcacerts -alias localca -file localcert.cert -keystore /usr/lib/jvm/jre/lib/security/cacerts -storepass changeit -noprompt
         nc -zv github.com 443
