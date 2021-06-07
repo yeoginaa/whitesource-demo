@@ -24,6 +24,8 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Trust CX Cert
       run: |
         echo "A initial message"
@@ -34,8 +36,6 @@ jobs:
       shell: bash
       env:
         LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
-    - name: Checkout
-      uses: actions/checkout@v2
     - name: Gitaction
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
       with:
@@ -49,3 +49,7 @@ jobs:
         scanners: sast
         bug_tracker: Sarif
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: cx.sarif
