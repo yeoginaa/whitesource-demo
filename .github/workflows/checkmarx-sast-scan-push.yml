@@ -31,7 +31,7 @@ jobs:
         whoami
         echo "A initial message"
         echo "$LOCAL_CA_CERT" > localcert.cert
-        keytool -import -trustcacerts -alias localca -file localcert.cert -keystore /usr/local/shareo/cma-certificates/ -storepass ch4nge1t.A -noprompt
+        keytool -import -trustcacerts -alias localca -file localcert.cert -keystore /usr/local/share/cma-certificates/ -storepass ch4nge1t.A -noprompt
         nc -zv github.com 443
         nc -zv alawpcxmgr201.risk.regn.net 443
         curl https://alawpcxmgr201.risk.regn.net/CxRestAPI/
