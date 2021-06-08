@@ -25,7 +25,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Checkmarx CxFlow Action
-      uses: hernan-soto/checkmarx-cxflow-github-action-RSG@v1.1 #Github Action version
+      uses: hernan-soto/checkmarx-cxflow-github-action-RSG@v2.0 #Github Action version
       with:
         project: Project-GITHUB-sample # <-- Insert Checkmarx SAST Project Name
         team: ${{ secrets.CHECKMARX_TEAM }}  #To be stored in GitHub Secrets.
