@@ -24,19 +24,8 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-    - name: Trust CX Cert
-      run: |
-        echo "A initial message"
-        cd /home/hernan
-        echo "$LOCAL_CA_CERT" > localcert.cert
-        keytool -import -trustcacerts -alias localca -file localcert.cert -keystore "$JAVA_HOME"\lib\security\cacerts -storepass changeit -noprompt
-        nc -zv github.com 443
-        nc -zv alawpcxmgr201.risk.regn.net 443
-      shell: bash
-      env:
-        LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
     - name: Checkmarx CxFlow Action
-      uses: hernan-soto/checkmarx-cxflow-github-action-RSG@v2.3 #Github Action version
+      uses: hernan-soto/checkmarx-cxflow-github-action-RSG@v2.4 #Github Action version
       with:
         project: Project-GITHUB-sample # <-- Insert Checkmarx SAST Project Name
         team: ${{ secrets.CHECKMARX_TEAM }}  #To be stored in GitHub Secrets.
