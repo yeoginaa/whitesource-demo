@@ -26,14 +26,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Trust CX Cert
-      run: |
-        echo "A initial message"
-        echo "$LOCAL_CA_CERT" > localcert.cert
-        keytool -import -trustcacerts -alias localca -file localcert.cert -keystore "$JAVA_HOME"\lib\security\cacerts -storepass changeit -noprompt
-      shell: bash
-      env:
-        LOCAL_CA_CERT : ${{secrets.LOCAL_CA_CERT}}
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
       with:
