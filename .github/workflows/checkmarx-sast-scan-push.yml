@@ -29,7 +29,7 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: hernan-soto/checkmarx-cxflow-github-action-RSG@v2.15 #Github Action version
       with:
-        project: Project-GITHUB-sample # <-- Insert Checkmarx SAST Project Name
+        project: Project-sample-2 # <-- Insert Checkmarx SAST Project Name
         team: ${{ secrets.CHECKMARX_TEAM }}  #To be stored in GitHub Secrets.
         checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }} # To be stored in GitHub Secrets.
@@ -43,4 +43,3 @@ jobs:
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: cx.sarif
-    
