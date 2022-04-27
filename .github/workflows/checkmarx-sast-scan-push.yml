@@ -29,7 +29,7 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: hernan-soto/checkmarx-cxflow-github-action-RSG@v2.16 #Github Action version
       with:
-        project: check-expired-certs # <-- Insert Checkmarx SAST Project Name
+        project: check-cicd-scan # <-- Insert Checkmarx SAST Project Name
         team: /CxServer/SP/Risk/QA  #To be stored in GitHub Secrets.
         checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }} # To be stored in GitHub Secrets.
